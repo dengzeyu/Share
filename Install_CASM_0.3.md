@@ -12,7 +12,7 @@ conda create -n casm_0.3 --override-channels -c bpuchala/label/dev -c prisms-cen
 ```bash
 conda activate casm_0.3
 ```
-## Remove installed CASM
+## Remove the installed CASM
 ```bash
 conda remove casm casm-python casm-cpp --force
 ```
