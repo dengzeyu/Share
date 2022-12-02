@@ -1,4 +1,4 @@
-#Install CASM 0.3.x
+# Install CASM 0.3.x
 ## Clone and install CASM 0.3.x
 ```bash
 git clone https://github.com/prisms-center/CASMcode.git
