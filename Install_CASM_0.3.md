@@ -1,4 +1,5 @@
 # Install CASM 0.3.x
+- This is the easiest way to install CASM from source. We first install original CASM using Anaconda from their repository. This will install all dependencies, which is very hard to install manually. Then we uninstall the CASM from repository and reinstall our own version of CASM locally.
 ## Clone and install CASM 0.3.x
 ```bash
 git clone https://github.com/prisms-center/CASMcode.git
