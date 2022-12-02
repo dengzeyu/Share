@@ -17,6 +17,8 @@ conda activate casm_0.3
 conda remove casm casm-python casm-cpp --force
 ```
 ## Compile and install CASM from source
+- Make sure your environment has GCC installed. I have gcc-7.4.0 and it works.
 ```bash
+cd CASMcode
 bash build_install.sh
 ```
