@@ -44,7 +44,8 @@ WORKDIR /
 ## Development using VSCode
 - Use `vscode-remote` and `ssh` to a machine, you need to configure the machine in `~/.ssh/config`
 - Install `Docker` in the remote machine
-- Then right-click the image and use `attach visual studio code`  to enter the container
+- Start a container from an image
+- Then right-click the container and use `Attach Visual Studio Code`  to enter the container
 ---
 ## Run container
 - More details can be found here: https://docs.docker.com/engine/reference/commandline/run/
