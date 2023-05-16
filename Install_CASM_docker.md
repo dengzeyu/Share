@@ -17,14 +17,12 @@ export PATH=/home/YOUR_USER_NAME/bin:$PATH
 ```
 - Then you need to `source ~/.bashrc`
 ## Configure container using a Dockerfile
-- Now you can import `CASM 0.3.x` directly from my DockerHub channel
-```bash
-docker pull dengzeyu/casm_0.3
-```
+- Now you can import `CASM 0.3.x` directly from my DockerHub channel `dengzeyu/casm_0.3`
 - `CASM` source code is in `/app/CASMcode` and `Miniconda` is installed in `/opt/conda`
 - The Dockerfile below will install `Ubuntu 20.04`, `Miniconda 3`, and `CASM`
 ## Configure CASM configuration for development
 - You can continue your development of `CASM` based on the version on my DockerHub channel
+- Prepare a dockerfile:`casm_dev.dockerfile`
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM dengzeyu/casm_0.3:latest 
@@ -40,6 +38,10 @@ RUN conda activate casm_dev && bash build.sh
 RUN make install
 RUN conda activate casm_dev && pip install python/casm
 WORKDIR /
+```
+- Build this image name as `casm_dev`
+```bash
+docker build ./ -f casm_dev.dockerfile -t casm_dev
 ```
 ## Development using VSCode
 - Use `vscode-remote` and `ssh` to a machine, you need to configure the machine in `~/.ssh/config`
