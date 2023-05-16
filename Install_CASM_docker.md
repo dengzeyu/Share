@@ -24,7 +24,7 @@ docker pull dengzeyu/casm_0.3
 - `CASM` source code is in `/app/CASMcode` and `Miniconda` is installed in `/opt/conda`
 - The Dockerfile below will install `Ubuntu 20.04`, `Miniconda 3`, and `CASM`
 ## Configure CASM configuration for development
-- You can continue development of `CASM` from my DockerHub channel
+- You can continue your development of `CASM` based on the version on my DockerHub channel
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM dengzeyu/casm_0.3:latest 
@@ -41,6 +41,11 @@ RUN make install
 RUN conda activate casm_dev && pip install python/casm
 WORKDIR /
 ```
+## Development using VSCode
+- Use `vscode-remote` and `ssh` to a machine, you need to configure the machine in `~/.ssh/config`
+- Install `Docker` in the remote machine
+- Then right-click the image and use `attach visual studio code`  to enter the container
+---
 ## Run container
 - More details can be found here: https://docs.docker.com/engine/reference/commandline/run/
 - `-d` is detachable mode (background)
@@ -71,6 +76,3 @@ docker commit NAME_OF_YOUR_CONTAINER casm:latest
 docker tag casm:latest dengzeyu/casm_0.3:latest
 docker push dengzeyu/casm_0.3:latest
 ```
-## Development using VSCode
-- Use `vscode-remote` and `ssh` to a machine, you need to configure the machine in `~/.ssh/config`
-- Install `Docker` in the remote machine
