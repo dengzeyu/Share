@@ -57,32 +57,23 @@ docker build ./ -f casm_dev.dockerfile -t casm_dev
 - `-i` run in interactive mode
 - `-t` is related to pseudo-TTY
 - `--name` is the name of this container
-- `--storage-opt size=200G` limit the storage to 200 GB
 - `-v` mount `/home/jerry`  outside the container to `/home/jerry` inside the container
 - `dengzeyu/casm.0.3.x:latest` is the image that we want to run
 - `--rm` automatically remove this container when it is stopped
 ```bash
-docker run -itd -v /home/jerry:/home/jerry --storage-opt size=200G --name casm_dev_container dengzeyu/casm.0.3.x:latest
+docker run -itd -v /home/jerry:/home/jerry --name casm_dev_container dengzeyu/casm.0.3.x:latest
 ```
-## Run a command in container outside of container
+## Run a command in container outside of container interactively
 - Here I'm running `casm init` command in a conda environment `casm_dev` inside a container `casm_dev_container` in the current path outside of container: `$PWD`
+- The command works only when you type this in the shell interactively
 ```bash
 docker exec -it -w $PWD casm_dev_container conda run -n casm_dev casm init
 ```
-## Enter the container
+## Run a command in container outside of container in a script
 ```bash
-docker exec -it casm_dev_container bash
-```
-## Save Docker image
-- Useful for running docker image on an HPC cluster using `singularity` where `docker` is not available
-```bash
-docker save casm:latest | gzip > casm.tar.gz
-```
-## Publish to Docker Hub
-- Here is an example of commit and push to your docker hub
-- You need to run `docker login` and enter credentials before commit and push
-```bash
-docker commit NAME_OF_YOUR_CONTAINER casm.0.3.x:latest
-docker tag casm.0.3.x:latest dengzeyu/casm.0.3.x:latest
-docker push dengzeyu/casm.0.3.x:latest
+#!/bin/bash
+CASM="docker exec -w $PWD casm_dev_container conda run -n casm_dev casm"
+PYTHON="docker exec -w $PWD casm_dev_container conda run -n casm_dev python"
+$CASM monte -s monte.json >> stdout.txt
+$PYTHON ../../analysis.py
 ```
