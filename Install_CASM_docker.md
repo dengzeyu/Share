@@ -9,18 +9,18 @@ curl -fsSL https://get.docker.com/rootless | sh
 ```
 - You also need to change `~/.bashrc` as suggested by the output of the above script, shown below
 - `YOUR_USER_ID` can be obtained using `id` 
-- `YOUR_USER_NAME` is your user name
+- `YOUR_USER_NAME` is your username
 ```bash
 export DOCKER_HOST=unix:///run/user/YOUR_USER_ID/docker.sock
 export PATH=/home/YOUR_USER_NAME/bin:$PATH
 ```
 - Then you need to `source ~/.bashrc`
-## configure a image using a Dockerfile
+## Configure an image using a Dockerfile
 - You can import `CASM 0.3.x` directly from my Docker Hub channel `dengzeyu/casm.0.3.x:latest`
 - For the CASM with source code stored in `/app/CASMcode`, you can pull `dengzeyu/casm.0.3.x:latest-dev`
 - `CASM` source code is in `/app/CASMcode` and `Miniconda` is installed in `/opt/conda`
-- The Dockerfile below will install `Ubuntu 20.04`, `Miniconda 3`, and `CASM`
-## build a CASM  image for development
+- The Dockerfile below will install `Miniconda 3`, and `CASM`
+## Build a CASM image for development
 - You can do development of `CASM`, e.g. changing the source code, based on the version on my Docker Hub channel
 - Prepare a Dockerfile:`casm_dev.dockerfile`
 ```dockerfile
